@@ -62,11 +62,12 @@ public class ImageActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Bitmap bm = bitmap;
+
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /*ignored for PNG*/, bos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100 /*ignored for PNG*/, bos);
         byte[] bitmapdata = bos.toByteArray();
 
+//write the bytes in file
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(f);
@@ -78,6 +79,7 @@ public class ImageActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), f);
         MultipartBody.Part body = MultipartBody.Part.createFormData("photo", f.getName(), reqFile);

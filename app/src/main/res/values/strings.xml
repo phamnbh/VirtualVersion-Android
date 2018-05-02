@@ -3,7 +3,7 @@
     <string name="loginTitle">Virtual Version</string>
     <string name="usernameHint">username</string>
     <string name="passwordHint">password</string>
-    <string name="loginButton">Login</string>
-    <string name="getSecret">Get Secret</string>
+    <string name="loginButton">Get Token</string>
+    <string name="getSecret">Login</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
 </resources>

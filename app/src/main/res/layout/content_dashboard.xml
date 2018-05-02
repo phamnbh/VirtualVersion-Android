@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:padding="20dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="28dp">
 
         <ListView
             android:id="@+id/theListView"

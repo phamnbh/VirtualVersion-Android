@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Intent;
 
@@ -25,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 //192.168.50.126:3000
 public class LoginActivity extends AppCompatActivity {
     Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl("http://192.168.50.126:3000")
+            .baseUrl("http://10.0.2.2:3000")
             .addConverterFactory(GsonConverterFactory.create());
 
     Retrofit retrofit = builder.build();
@@ -59,14 +60,16 @@ public class LoginActivity extends AppCompatActivity {
     private static String token;
 
     private void login() {
-        Login login = new Login("a", "a");
+        EditText mUsername = (EditText)findViewById(R.id.loginUsernameField);
+        EditText mPassword = (EditText)findViewById(R.id.loginPasswordField);
+        Login login = new Login(mUsername.getText().toString(), mPassword.getText().toString());
         Call<User> call = userClient.login(login);
 
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()){
-//                    Toast.makeText(LoginActivity.this, response.body().getToken(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Token acquired", Toast.LENGTH_SHORT).show();
                     token = response.body().getToken();
                 } else {
                     Toast.makeText(LoginActivity.this, "Wrong Login", Toast.LENGTH_SHORT).show();

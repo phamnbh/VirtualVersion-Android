@@ -131,16 +131,16 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        final Intent getCameraIntent = new Intent(this, CameraActivity.class);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                startActivity(getCameraIntent);
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        final Intent getCameraIntent = new Intent(this, CameraActivity.class);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+////                        .setAction("Action", null).show();
+//                startActivity(getCameraIntent);
+//            }
+//        });
     }
 
 
@@ -157,7 +157,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         UserClient userClient = retrofit.create(UserClient.class);
 
-        Call<ResponseBody> call = userClient.getDocBody("http://192.168.50.126:3000/api/" + id);
+        Call<ResponseBody> call = userClient.getDocBody("http://10.0.2.2:3000/api/" + id);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
